@@ -143,19 +143,27 @@ function App() {
               <code className="code">pip</code> in your commands.
             </p>
 
+            <h3 className="subsection" id="project-files">2. Project Files</h3>
+            <p className="paragraph">
+              Download or clone the project files from the GitHub repository:
+            </p>
+            <code className="code">
+              git clone <a href="https://github.com/vorlie/wot-replay-manager.git" target="_blank" rel="noopener noreferrer">https://github.com/vorlie/wot-replay-manager.git</a>
+            </code>
+
             <h3 className="subsection" id="create-venv">
-              2. Create a Virtual Environment with uv
+              3. Create a Virtual Environment with uv
             </h3>
             <p className="paragraph">
               It's a best practice to install project dependencies in a virtual
               environment to avoid conflicts with other Python projects. Using{" "}
               <code className="code">uv</code> is the fastest way to set this
               up. Open your terminal or command prompt and run the following
-              command:
+              command inside the project directory root:
             </p>
             <code className="code">uv venv</code>
 
-            <h3 className="subsection">3. Install Dependencies</h3>
+            <h3 className="subsection">4. Install Dependencies</h3>
             <p className="paragraph">
               With your virtual environment created, you can install all
               necessary libraries by running a single command:{" "}
@@ -163,7 +171,7 @@ function App() {
             </p>
 
             <h3 className="subsection" id="bottles-cli">
-              4. Bottles CLI (Optional, for replay playback)
+              5. Bottles CLI (Optional, for replay playback)
             </h3>
             <p className="paragraph">
               This tool is typically used on Linux systems for managing Windows
@@ -183,7 +191,7 @@ function App() {
               official website: <a href="https://usebottles.com/" target="_blank" rel="noopener noreferrer">https://usebottles.com/</a>
             </p>
 
-            <h3 className="subsection" id="run-app">5. How to Run the Application</h3>
+            <h3 className="subsection" id="run-app">6. How to Run the Application</h3>
             <p className="paragraph">
               With the virtual environment created and dependencies installed,
               you can run the application directly from your terminal.
@@ -295,16 +303,19 @@ function App() {
                     <a href="#install-python">1. Python 3.x</a>
                   </li>
                   <li>
-                    <a href="#create-venv">2. Create a Virtual Environment with uv</a>
+                    <a href="#project-files">2. Project Files</a>
                   </li>
                   <li>
-                    <a href="#install-dependencies">3. Install Dependencies</a>
+                    <a href="#create-venv">3. Create a Virtual Environment with uv</a>
                   </li>
                   <li>
-                    <a href="#bottles-cli">4. Bottles CLI (Optional, for replay playback)</a>
+                    <a href="#install-dependencies">4. Install Dependencies</a>
                   </li>
                   <li>
-                    <a href="#run-app">5. How to Run the Application</a>
+                    <a href="#bottles-cli">5. Bottles CLI (Optional, for replay playback)</a>
+                  </li>
+                  <li>
+                    <a href="#run-app">6. How to Run the Application</a>
                   </li>
                 </ul>
               </li>
