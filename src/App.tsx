@@ -63,7 +63,21 @@ function App() {
                 Windows and Linux operating systems.
               </li>
             </ul>
-
+            <div className="button-group">
+              <a
+                href="https://github.com/vorlie/WoT-Replay-Manager/releases/download/1.0/WoT_Replay_Manager-Win64.zip"
+                download
+                className="download-button"
+              >
+                Download for Windows
+              </a>
+              <a
+                href="#prerequisites"
+                className="download-button secondary-button"
+              >
+                Steps for Linux
+              </a>
+            </div>
             <hr className="divider" />
 
             {/* Prerequisites Section */}

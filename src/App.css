@@ -201,6 +201,45 @@
   color: #f87171; /* red accent */
 }
 
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.download-button{
+  display: inline-block;
+  background-color: #ef4444; /* Wargaming red */
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.15rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  margin-top: 1rem;
+}
+.download-button:hover {
+  color: #ffffff;
+  background-color: #dc2626; /* darker red on hover */
+}
+
+.secondary-button {
+  display: inline-block;
+  background-color: #3e424b; /* gray-500 */
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.15rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  margin-top: 1rem;
+}
+.secondary-button:hover {
+  color: #ffffff;
+  background-color: #22272c; /* darker gray on hover */
+}
+
 .code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   background: #27272a; /* zinc-800 */
