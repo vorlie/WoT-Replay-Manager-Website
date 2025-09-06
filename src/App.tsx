@@ -146,7 +146,7 @@ function App() {
             <p className="paragraph">
               Make sure Python is installed on your system. If not, you can run{" "}
               <pre>
-                <code>pip install uv</code>
+                <code>uv python install</code>
               </pre>
             </p>
             <p className="paragraph">
