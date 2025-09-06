@@ -31,16 +31,10 @@ function App() {
               launch replay files, as well as clean up old replays that are no
               longer compatible with the current game version.
             </p>
-            <p className="paragraph highlight">Mainly made for Linux users.</p>
-
             <ul className="list">
               <li>
-                <strong>Cross-Platform Compatibility:</strong> Supports both
-                Windows and Linux operating systems.
-              </li>
-              <li>
-                <strong>Replay Listing:</strong> Automatically detects and lists
-                .wotreplay files from your specified directory.
+                <strong>Launch Replays:</strong> Launches selected replays using
+                your bottles-cli configuration on Linux or directly with your local game installation on Windows.
               </li>
               <li>
                 <strong>Detailed Information:</strong> Displays key replay
@@ -48,8 +42,16 @@ function App() {
                 and game version.
               </li>
               <li>
+                <strong>Replay Listing:</strong> Automatically detects and lists
+                .wotreplay files from your specified directory.
+              </li>
+              <li>
                 <strong>Sorting:</strong> Sort your replay list by date, player
                 name, tank, map, or damage.
+              </li>
+              <li>
+                <strong>Persistent Settings:</strong> Saves your specified paths
+                so you only need to configure them once.
               </li>
               <li>
                 <strong>Automatic Cleanup:</strong> Identifies and allows you to
@@ -57,12 +59,8 @@ function App() {
                 client version, saving you disk space.
               </li>
               <li>
-                <strong>Launch Replays:</strong> Launches selected replays using
-                your bottles-cli configuration.
-              </li>
-              <li>
-                <strong>Persistent Settings:</strong> Saves your specified paths
-                so you only need to configure them once.
+                <strong>Cross-Platform Compatibility:</strong> Supports both
+                Windows and Linux operating systems.
               </li>
             </ul>
 
