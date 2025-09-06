@@ -133,7 +133,9 @@ function App() {
             <h3 className="subsection" id="install-python">1. Python 3.x</h3>
             <p className="paragraph">
               Make sure Python is installed on your system. If not, you can run{" "}
-              <code className="code">uv python install</code>.
+              <pre>
+                <code>pip install uv</code>
+              </pre>
             </p>
             <p className="paragraph">
               On Linux, you may need to use{" "}
@@ -147,9 +149,11 @@ function App() {
             <p className="paragraph">
               Download or clone the project files from the GitHub repository:
             </p>
-            <code className="code">
-              git clone <a href="https://github.com/vorlie/wot-replay-manager.git" target="_blank" rel="noopener noreferrer">https://github.com/vorlie/wot-replay-manager.git</a>
-            </code>
+            <pre>
+              <code>
+                git clone <a href="https://github.com/vorlie/wot-replay-manager.git" target="_blank" rel="noopener noreferrer">https://github.com/vorlie/wot-replay-manager.git</a>
+              </code>
+            </pre>
 
             <h3 className="subsection" id="create-venv">
               3. Create a Virtual Environment with uv
@@ -161,13 +165,17 @@ function App() {
               up. Open your terminal or command prompt and run the following
               command inside the project directory root:
             </p>
-            <code className="code">uv venv</code>
+            <pre>
+              <code>uv venv</code>
+            </pre>
 
             <h3 className="subsection">4. Install Dependencies</h3>
             <p className="paragraph">
               With your virtual environment created, you can install all
               necessary libraries by running a single command:{" "}
-              <code className="code">uv pip install -r requirements.txt</code>
+              <pre>
+                <code>uv pip install -r requirements.txt</code>
+              </pre>
             </p>
 
             <h3 className="subsection" id="bottles-cli">
@@ -199,7 +207,9 @@ function App() {
             <p className="paragraph">
               Using <code className="code">uv run</code> will automatically use
               the correct virtual environment:{" "}
-              <code className="code">uv run python main.py</code>
+              <pre>
+                <code>uv run python main.py</code>
+              </pre>
             </p>
 
             <hr className="divider" />
