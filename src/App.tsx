@@ -25,288 +25,173 @@ function App() {
           <section className="content">
             <h1 className="title" id="home">WoT Replay Manager</h1>
             <p className="paragraph">
-              The WoT Replay Manager is a desktop application built with Python
-              and PyQt6 that helps you manage and launch your World of Tanks
-              replays. It provides a user-friendly interface to sort, view, and
-              launch replay files, as well as clean up old replays that are no
-              longer compatible with the current game version.
+              WoT Replay Manager is a desktop application built with C++/Qt6 and a Python parser. It helps you manage and launch your World of Tanks replays with a modern, user-friendly interface. The app automatically parses replay files, displays detailed metadata, and allows cleanup of outdated replays.
             </p>
             <ul className="list">
               <li>
-                <strong>Launch Replays:</strong> Launches selected replays using
-                your bottles-cli configuration on Linux or directly with your local game installation on Windows.
+                <strong>Cross-Platform:</strong> Works on both Windows and Linux.
               </li>
               <li>
-                <strong>Detailed Information:</strong> Displays key replay
-                metadata, including player name, tank, map, date, damage dealt,
-                and game version.
+                <strong>Replay Listing:</strong> Detects and lists .wotreplay files from your chosen directory.
               </li>
               <li>
-                <strong>Replay Listing:</strong> Automatically detects and lists
-                .wotreplay files from your specified directory.
+                <strong>Detailed Information:</strong> Shows player name, tank, map, date, damage, and client version.
               </li>
               <li>
-                <strong>Sorting:</strong> Sort your replay list by date, player
-                name, tank, map, or damage.
+                <strong>Sorting:</strong> Sort replays by date, player name, tank, map, or damage.
               </li>
               <li>
-                <strong>Persistent Settings:</strong> Saves your specified paths
-                so you only need to configure them once.
+                <strong>Launch Replays:</strong> Launch selected replays using your game installation.
               </li>
               <li>
-                <strong>Automatic Cleanup:</strong> Identifies and allows you to
-                delete old replays that are incompatible with your current
-                client version, saving you disk space.
+                <strong>Persistent Settings:</strong> Saves paths (WoT executable, replays folder, etc.) for future sessions.
               </li>
               <li>
-                <strong>Cross-Platform Compatibility:</strong> Supports both
-                Windows and Linux operating systems.
+                <strong>Automatic Cleanup:</strong> Delete replays incompatible with your current client version. (In development)
               </li>
             </ul>
             <div className="button-group">
               <a
-                href="https://github.com/vorlie/WoT-Replay-Manager/releases/download/1.0/WoT_Replay_Manager-Win64.zip"
+                href="https://github.com/vorlie/WoT-Replay-Manager/releases/download/1.0/WoT-Replay-Manager-1.0-Win64.zip"
                 download
                 className="download-button"
               >
                 Download for Windows
               </a>
               <a
-                href="#prerequisites"
-                className="download-button secondary-button"
+                href="https://github.com/vorlie/WoT-Replay-Manager/releases/download/1.0/WoT-Replay-Manager-1.0-linux-x86_64.tar.gz"
+                download
+                className="download-button"
               >
-                Steps for Linux
+                Download for Linux
               </a>
             </div>
             <hr className="divider" />
 
             {/* Prerequisites Section */}
             <h2 className="subtitle" id="prerequisites">Prerequisites</h2>
-            <p className="paragraph">To run this application, you will need:</p>
-
-            <h3 className="subsection" id="resources">0. Resources</h3>
-            <ul className="link-list">
+            
+            <h3 className="subsection" id="linux-prerequisites">Linux</h3>
+            <ul className="list">
               <li>
-                <a
-                  href="https://docs.astral.sh/uv/reference/cli/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  uv CLI Reference
-                </a>
+                <strong>Qt6 libraries</strong><br />
+                Ensure Qt6 is installed. If you want a fully standalone binary, you can build static Qt6.
               </li>
               <li>
-                <a
-                  href="https://docs.astral.sh/uv/getting-started/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  uv Getting Started
-                </a>
+                <strong>Python 3.12</strong><br />
+                Required to compile the parser using Nuitka.
               </li>
               <li>
-                <a
-                  href="https://docs.astral.sh/uv/guides/install-python/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  uv Install Python Guide
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://docs.astral.sh/uv/getting-started/installation/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  uv Installation
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://docs.astral.sh/uv/guides/scripts/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  uv Scripts Guide
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://usebottles.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Bottles Website
-                </a>
+                <strong>Nuitka (for parser compilation)</strong><br />
+                <pre>
+                  <code>
+                    python3.12 -m pip install --upgrade pip
+                    python3.12 -m pip install nuitka
+                  </code>
+                </pre>
               </li>
             </ul>
 
-            <h3 className="subsection" id="install-python">1. Python 3.x</h3>
+            <h3 className="subsection" id="windows-prerequisites">Windows</h3>
+            <ul className="list">
+              <li>
+                <strong>Qt6</strong> (MSVC or MinGW, matching the compiler used for the project).
+              </li>
+              <li>
+                <strong>Python 3.12</strong> (for building the parser).
+              </li>
+              <li>
+                <strong>Nuitka</strong> (for building the parser executable).
+              </li>
+            </ul>
+
+            <hr className="divider" />
+
+            {/* Building the Application Section */}
+            <h2 className="subtitle" id="building-app">Building the Application</h2>
+
+            <h3 className="subsection" id="building-linux">Linux</h3>
             <p className="paragraph">
-              Make sure Python is installed on your system. If not, you can run{" "}
-              <pre>
-                <code>uv python install</code>
-              </pre>
-            </p>
-            <p className="paragraph">
-              On Linux, you may need to use{" "}
-              <code className="code">python3</code> and{" "}
-              <code className="code">pip3</code> instead of{" "}
-              <code className="code">python</code> and{" "}
-              <code className="code">pip</code> in your commands.
+              You have two options to build the project:
             </p>
 
-            <h3 className="subsection" id="project-files">2. Project Files</h3>
-            <p className="paragraph">
-              Download or clone the project files from the GitHub repository:
-            </p>
+            <h4 className="subsection">1. Using the Terminal (CMake + Make):</h4>
             <pre>
               <code>
-                git clone <a href="https://github.com/vorlie/wot-replay-manager.git" target="_blank" rel="noopener noreferrer">https://github.com/vorlie/wot-replay-manager.git</a>
+                git clone &lt;repo-url&gt;
+                cd WoT-Replay-Manager
+                mkdir build && cd build
+                cmake ..
+                make -j$(nproc)
+              </code>
+            </pre>
+            <p className="paragraph">
+              The compiled binary will be located in <code>build/WoT-Replay-Manager</code>.
+            </p>
+
+            <h4 className="subsection">2. Using Qt Creator (recommended):</h4>
+            <ul className="list">
+              <li>Open <strong>Qt Creator</strong>.</li>
+              <li>Click <strong>File → Open File or Project</strong> and select <code className="code">CMakeLists.txt</code> in the project root.</li>
+              <li>Configure the kit (choose your Qt6 version and compiler).</li>
+              <li>Click the <strong>Build</strong> button to compile the project.</li>
+              <li>The resulting binary will appear in the build folder defined by Qt Creator (usually inside <code className="code">build-...</code>).</li>
+            </ul>
+
+            <h3 className="subsection" id="building-windows">Windows</h3>
+            <ul className="list">
+              <li>Copy the source files to your Windows machine.</li>
+              <li>Open the project in <strong>Qt Creator</strong>, configure, and build.</li>
+              <li>
+                Use <code className="code">windeployqt</code> to bundle the required Qt DLLs:
+                <pre>
+                  <code>
+                    C:\Qt\6.x.x\mingw_64\bin\windeployqt.exe path\to\WoT-Replay-Manager.exe
+                  </code>
+                </pre>
+              </li>
+              <li>Make sure the <code className="code">parser</code> folder is present alongside the executable.</li>
+            </ul>
+
+            <hr className="divider" />
+
+            {/* Building the Python Parser Section */}
+            <h2 className="subtitle" id="building-parser">Building the Python Parser (<code className="code">replay_parser</code>)</h2>
+
+            <h3 className="subsection" id="parser-linux">Linux</h3>
+            <pre>
+              <code>
+                cd parser
+                python3.12 -m venv .venv
+                source .venv/bin/activate
+                pip install --upgrade pip nuitka
+
+                python3.12 -m nuitka --standalone replay_parser.py
+                cp -r replay_parser.dist/* ../parser/
               </code>
             </pre>
 
-            <h3 className="subsection" id="create-venv">
-              3. Create a Virtual Environment with uv
-            </h3>
-            <p className="paragraph">
-              It's a best practice to install project dependencies in a virtual
-              environment to avoid conflicts with other Python projects. Using{" "}
-              <code className="code">uv</code> is the fastest way to set this
-              up. Open your terminal or command prompt and run the following
-              command inside the project directory root:
-            </p>
+            <h3 className="subsection" id="parser-windows">Windows</h3>
             <pre>
-              <code>uv venv</code>
+              <code>
+                cd parser
+                python -m nuitka --standalone replay_parser.py
+                # Copy all generated files to parser folder
+              </code>
             </pre>
-
-            <h3 className="subsection">4. Install Dependencies</h3>
             <p className="paragraph">
-              With your virtual environment created, you can install all
-              necessary libraries by running a single command:{" "}
-              <pre>
-                <code>uv pip install -r requirements.txt</code>
-              </pre>
+              Note: Antivirus software may flag the compiled parser. Users can build it themselves to avoid this.
             </p>
-
-            <h3 className="subsection" id="bottles-cli">
-              5. Bottles CLI (Optional, for replay playback)
-            </h3>
-            <p className="paragraph">
-              This tool is typically used on Linux systems for managing Windows
-              applications.
-            </p>
-            <p className="paragraph">
-              This step can be skipped if you are using Windows, as replays will
-              launch with your local game installation.
-            </p>
-            <p className="paragraph">
-              It is required to launch replays with your World of Tanks
-              executable if you are on Linux. The rest of the application's
-              features will work without it.
-            </p>
-            <p className="paragraph">
-              You can find more information about Bottles and its CLI on the
-              official website: <a href="https://usebottles.com/" target="_blank" rel="noopener noreferrer">https://usebottles.com/</a>
-            </p>
-
-            <h3 className="subsection" id="run-app">6. How to Run the Application</h3>
-            <p className="paragraph">
-              With the virtual environment created and dependencies installed,
-              you can run the application directly from your terminal.
-            </p>
-            <p className="paragraph">
-              Using <code className="code">uv run</code> will automatically use
-              the correct virtual environment:{" "}
-              <pre>
-                <code>uv run python main.py</code>
-              </pre>
-            </p>
-
             <hr className="divider" />
-
-            {/* How to Use Section */}
-            <h2 className="subtitle" id="how-to-use">How to Use</h2>
-            <h3 className="subsection" id="first-time-setup">1. First-Time Setup</h3>
-            <p className="paragraph">
-              Upon first launch, the application will prompt you to configure
-              the necessary settings. You will need to provide the following
-              paths:
-            </p>
+            
+            {/* Running the Application Section */}
+            <h2 className="subtitle" id="running-app">Running the Application</h2>
             <ul className="list">
               <li>
-                <strong>Bottles Bottle Name</strong> (Linux only): The name of
-                the Bottles container where World of Tanks is installed (e.g.,{" "}
-                <code className="code">WindowsGames</code>
-                ). This setting will be ignored on Windows.
+                <strong>Linux</strong>: Use <code className="code">run.sh</code> to launch. It sets <code className="code">LD_LIBRARY_PATH</code>, <code className="code">QT_PLUGIN_PATH</code>, and platform plugin (<code className="code">QT_QPA_PLATFORM=xcb</code>).
               </li>
               <li>
-                <strong>WoT Executable Path</strong>: The full path to your{" "}
-                <code className="code">WorldOfTanks.exe</code> file.
-              </li>
-              <li>
-                <strong>Replays Folder Path</strong>: The folder where your{" "}
-                <code className="code">.wotreplay</code> files are saved.
-              </li>
-              <li>
-                <strong>Client Version XML Path</strong>: The path to the{" "}
-                <code className="code">version.xml</code> file in your World of
-                Tanks game directory (used for replay cleanup).
-              </li>
-            </ul>
-            <p className="paragraph">
-              The file dialogs will automatically open in the last known game
-              directory to make it easier to find the correct files.
-            </p>
-
-            <h3 className="subsection" id="managing-replays">2. Managing Replays</h3>
-            <ul className="list">
-              <li>
-                The main window will display a list of all detected replays.
-              </li>
-              <li>
-                Use the "<strong>Sort by</strong>" dropdown menu to change the
-                order of the replay list.
-              </li>
-              <li>
-                Select a replay from the list and click the "
-                <strong>Launch Replay</strong>" button to start the replay in
-                World of Tanks.
-              </li>
-            </ul>
-
-            <h3 className="subsection" id="cleanup-old-replays">3. Cleaning Up Old Replays</h3>
-            <ul className="list">
-              <li>
-                Click the "<strong>Cleanup Old Replays</strong>" button to find
-                and delete replays that are no longer compatible with your
-                current game version.
-              </li>
-              <li>
-                A confirmation dialog will appear, showing you how many replays
-                are about to be deleted.
-              </li>
-              <li>
-                This feature helps you free up disk space by removing outdated
-                files.
-              </li>
-            </ul>
-
-            <hr className="divider" />
-
-            {/* Code Structure Section */}
-            <h2 className="subtitle" id="code-structure">Code Structure</h2>
-            <ul className="list">
-              <li>
-                <code className="code">main.py</code>: The main application file
-                containing the `ReplayManager` and `SettingsDialog` classes. It
-                handles the UI, user interactions, and core application logic.
-              </li>
-              <li>
-                <code className="code">utils/__init__.py</code>: Contains helper
-                functions, such as `get_replay_data`, which is responsible for
-                parsing the replay files and extracting metadata.
+                <strong>Windows</strong>: Run <code className="code">WoT-Replay-Manager.exe</code>. Ensure the parser folder is present alongside the executable.
               </li>
             </ul>
           </section>
@@ -319,44 +204,37 @@ function App() {
                 <a href="#prerequisites">Prerequisites</a>
                 <ul className="list">
                   <li>
-                    <a href="#resources">0. Resources</a>
+                    <a href="#linux-prerequisites">Linux</a>
                   </li>
                   <li>
-                    <a href="#install-python">1. Python 3.x</a>
-                  </li>
-                  <li>
-                    <a href="#project-files">2. Project Files</a>
-                  </li>
-                  <li>
-                    <a href="#create-venv">3. Create a Virtual Environment with uv</a>
-                  </li>
-                  <li>
-                    <a href="#install-dependencies">4. Install Dependencies</a>
-                  </li>
-                  <li>
-                    <a href="#bottles-cli">5. Bottles CLI (Optional, for replay playback)</a>
-                  </li>
-                  <li>
-                    <a href="#run-app">6. How to Run the Application</a>
+                    <a href="#windows-prerequisites">Windows</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="#how-to-use">How to Use</a>
+                <a href="#building-app">Building the Application</a>
                 <ul className="list">
                   <li>
-                    <a href="#first-time-setup">1. First Time Setup</a>
+                    <a href="#building-linux">Linux</a>
                   </li>
                   <li>
-                    <a href="#managing-replays">2. Managing Replays</a>
-                  </li>
-                  <li>
-                    <a href="#cleanup-old-replays">3. Cleaning Up Old Replays</a>
+                    <a href="#building-windows">Windows</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="#code-structure">Code Structure</a>
+                <a href="#building-parser">Building the Python Parser</a>
+                <ul className="list">
+                  <li>
+                    <a href="#parser-linux">Linux</a>
+                  </li>
+                  <li>
+                    <a href="#parser-windows">Windows</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#running-app">Running the Application</a>
               </li>
             </ul>
             {/* Gallery Section */}
